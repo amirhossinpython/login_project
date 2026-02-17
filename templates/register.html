@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>فرم ثبت نام</h2>
+            
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+            
+            <form id="registerForm" action="/register" method="POST" onsubmit="return validateForm()">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first_name">نام</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last_name">نام خانوادگی</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">سن</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birth_place">محل تولد</label>
+                        <input type="text" id="birth_place" name="birth_place" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="national_code">کد ملی</label>
+                        <input type="text" id="national_code" name="national_code" maxlength="10" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">شهر زندگی</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">شماره موبایل</label>
+                    <input type="tel" id="phone" name="phone" maxlength="11" pattern="[0-9]{11}" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">رمز عبور</label>
+                        <input type="password" id="password" name="password" minlength="6" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm_password">تکرار رمز عبور</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">ثبت نام</button>
+            </form>
+            
+            <p class="text-center">قبلاً ثبت نام کرده‌اید؟ <a href="/login">وارد شوید</a></p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
